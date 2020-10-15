@@ -67,7 +67,7 @@ public class Record {
 
 	@Override
 	public String toString() {
-		return "Record [record=" + record + "]";
+		return "Record [record = " + record + "]";
 	}
 	
 	/**

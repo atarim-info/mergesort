@@ -1,14 +1,17 @@
 package info.atarim.mergesort;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TestRecordsBulk {
+	private static final Logger LOG = LoggerFactory.getLogger(TestRecordsBulk.class );
 
 	@Test
 	public void test() {
@@ -19,11 +22,11 @@ public class TestRecordsBulk {
 			"000,0"
 		};
 		
-		System.out.println("recordsList");
+		LOG.debug("recordsList");
 		RecordsBulk recordsBulk = new RecordsBulk();
 		for (int i = 0; i < records.length; i++) {
 			Record record = new Record(records[i]);
-			System.out.println(record);
+			LOG.debug(record.asString());
 			recordsBulk.addRecord(record);
 			
 		}
@@ -31,9 +34,9 @@ public class TestRecordsBulk {
 		recordsBulk.sort(1);
 		
 		List<Record> sortedRecordsList = recordsBulk.getRecords();
-		System.out.println("sortedRecordsList");
+		LOG.debug("sortedRecordsList");
 		for (Record record : sortedRecordsList) {
-			System.out.println(record);
+			LOG.debug(record.asString());
 		}
 	
 		assertNotEquals(recordsList, sortedRecordsList);
@@ -45,11 +48,11 @@ public class TestRecordsBulk {
 				"333,3"
 			};
 		
-		System.out.println("sortedRecordsList");
+		LOG.debug("sortedRecordsList");
 		recordsList = new ArrayList<>();
 		for (int i = 0; i < sortedRecords.length; i++) {
 			Record record = new Record(sortedRecords[i]);
-			System.out.println(record);
+			LOG.debug(record.toString());
 			recordsList.add(record);
 		}
 		
